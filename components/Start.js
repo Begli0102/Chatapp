@@ -21,6 +21,8 @@ export default class Start extends React.Component {
       };
        }
 
+
+       
   render() {
     let { backgroundColor } = this.state;
     return (
