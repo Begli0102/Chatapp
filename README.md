@@ -47,7 +47,7 @@ Install all dependencies listed in package.json in the local node_modules folder
 
 - Finally, you must go to the project configuration, and in the "General" tab you will find the SDK Configuration. You must copy the configuration code of your Firebase service into the "Chat" component of the app. The configuration code in both Firebase and the app looks like this:
 
-| const firebaseConfig = {
+> const firebaseConfig = {
     apiKey: "AIzaSyA6SsnBQasoOu0s19Q_kmOLQQhwrJ9jRGU",
     authDomain: "chatapp-348df.firebaseapp.com",
     projectId: "chatapp-348df",
@@ -58,7 +58,7 @@ Install all dependencies listed in package.json in the local node_modules folder
   }
    if (!firebase.apps.length){
        firebase.initializeApp(firebaseConfig);
-        }|
+        }
 
 ## Start the App
 
