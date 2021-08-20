@@ -1,6 +1,6 @@
 # ChatApp
 
-To build a chat app for mobile devices using React Native. The app will provide users with a chat interface and options to share images and their location.
+A chat app for mobile devices using React Native. The app will provide users with a chat interface and options to share images and their location.
 
 ## Key Features
 
@@ -9,21 +9,22 @@ To build a chat app for mobile devices using React Native. The app will provide 
 - The chat must provide users with two additional communication features: sending images and location data.
 - Data gets stored online and offline
 
-## Technical Requirements
+## Built with
 
-- The app must be written in React Native.
-- The app must be developed using Expo.
-- The app must be styled according to the given screen design.
-- Chat conversations must be stored in Google Firestore Database.
-- The app must authenticate users anonymously via Google Firebase authentication.
-- Chat conversations must be stored locally.
-- The app must let users pick and send images from the phone’s image library.
-- The app must let users take pictures with the device’s camera app, and send them.
-- The app must store images in Firebase Cloud Storage.
-- The app must be able to read the user’s location data
-- Location data must be sent via the chat in a map view.
-- The chat interface and functionality must be created using the Gifted Chat library.
-- The app’s codebase must contain comments.
+- expo
+- expo-image-picker
+- expo-location
+- expo-permissions
+- firebase
+- react
+- react-dom
+- react-native
+- react-native-gifted-chat
+- react-native-keyboard-spacer
+- react-native-maps
+- react-native-web
+- react-navigation
+- react-navigation-stack
 
 ## Setting up the app
 To develop and test native apps with React Native, Facebook recommends using Expo.
@@ -47,8 +48,8 @@ Install all dependencies listed in package.json in the local node_modules folder
 
 - Finally, you must go to the project configuration, and in the "General" tab you will find the SDK Configuration. You must copy the configuration code of your Firebase service into the "Chat" component of the app. The configuration code in both Firebase and the app looks like this:
 
-| const firebaseConfig = {
-    apiKey: "AIzaSyA6SsnBQasoOu0s19Q_kmOLQQhwrJ9jRGU",
+ > const firebaseConfig = {
+    apiKey: "AIzaSzA6SsnBQasoOu0s19Q_kmOLQQhwrJ9jRGU",
     authDomain: "chatapp-348df.firebaseapp.com",
     projectId: "chatapp-348df",
     storageBucket: "chatapp-348df.appspot.com",
@@ -58,7 +59,7 @@ Install all dependencies listed in package.json in the local node_modules folder
   }
    if (!firebase.apps.length){
        firebase.initializeApp(firebaseConfig);
-        }|
+        }>
 
 ## Start the App
 

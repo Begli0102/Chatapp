@@ -10,7 +10,6 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
 
 
-
 import firebase from 'firebase';
 import 'firebase/firestore';
 

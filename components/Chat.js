@@ -8,7 +8,6 @@ import firebase from "firebase/app";
 import CustomActions from './CustomActions';
 import MapView from 'react-native-maps';
 
-
   require('firebase/firestore');
   require('firebase/auth');
 
