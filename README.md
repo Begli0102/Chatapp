@@ -59,7 +59,7 @@ Install all dependencies listed in package.json in the local node_modules folder
   }
    if (!firebase.apps.length){
        firebase.initializeApp(firebaseConfig);
-        }>
+        }
 
 ## Start the App
 
@@ -68,8 +68,7 @@ Navigate to the root folder  in your terminal and type:
 `expo start` or `npm start`
 
 ## Run on Mobile Device
-After starting the app, use your mobile to scan the QR code with the Expo app (Android) or the device's camera (iOS). 
+After starting the app, use your mobile to scan the QR code with the Expo app (Android) or the device's camera (iOS).
 
 ## Run on Simulator/Emulator
 After starting the app, type 'a' in your CLI to run the app on an Android emulator, and 'i' to run it on an iOS simulator.
-
