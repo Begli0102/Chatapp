@@ -46,20 +46,7 @@ Install all dependencies listed in package.json in the local node_modules folder
 
 - To save the messages sent by users, you must create a collection in Cloud Firestore. To do this, you must go to the "Firestore Database" option in the Firebase main menu.
 
-- Finally, you must go to the project configuration, and in the "General" tab you will find the SDK Configuration. You must copy the configuration code of your Firebase service into the "Chat" component of the app. The configuration code in both Firebase and the app looks like this:
-
- > const firebaseConfig = {
-    apiKey: "AIzaSzA6SsnBQasoOu0s19Q_kmOLQQhwrJ9jRGU",
-    authDomain: "chatapp-348df.firebaseapp.com",
-    projectId: "chatapp-348df",
-    storageBucket: "chatapp-348df.appspot.com",
-    messagingSenderId: "852661635541",
-    appId: "1:852661635541:web:0477e3c0cdecc61322555c",
-    measurementId: "G-HH1NLCK1XS"
-  }
-   if (!firebase.apps.length){
-       firebase.initializeApp(firebaseConfig);
-        }
+- Finally, you must go to the project configuration, and in the "General" tab you will find the SDK Configuration. You must copy the configuration code of your Firebase service into the "Chat" component of the app. 
 
 ## Start the App
 
