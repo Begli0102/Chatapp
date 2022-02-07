@@ -1,30 +1,20 @@
-import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
-import PropTypes from 'prop-types';
+import React from "react";
+import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import PropTypes from "prop-types";
 
+//to ask permission for accessing to photos and picking one
+import * as Permissions from "expo-permissions";
+import * as ImagePicker from "expo-image-picker";
 
-//to ask permission for accessing to photos and picking one  
-import * as Permissions from 'expo-permissions';
-import * as ImagePicker from 'expo-image-picker';
+import * as Location from "expo-location";
 
-import * as Location from 'expo-location';
-
-
-import firebase from 'firebase';
-import 'firebase/firestore';
-
+import firebase from "firebase";
+import "firebase/firestore";
 
 export default class CustomActions extends React.Component {
-
-
   //Function which handles the different communication features
   onActionPress = () => {
-    const options = [
-      "Photo Library",
-      "Camera",
-      "Location",
-      "Cancel",
-    ];
+    const options = ["Photo Library", "Camera", "Location", "Cancel"];
     const cancelButtonIndex = options.length - 1;
     this.context.actionSheet().showActionSheetWithOptions(
       {
@@ -47,7 +37,6 @@ export default class CustomActions extends React.Component {
     );
   };
 
-
   //Select Image from Photo Library
   selectImage = async () => {
     const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
@@ -65,7 +54,6 @@ export default class CustomActions extends React.Component {
       console.log(error.message);
     }
   };
-
 
   //Take Photo with camera
   takePhoto = async () => {
@@ -89,14 +77,14 @@ export default class CustomActions extends React.Component {
     }
   };
 
-
   //Get Location
   getLocation = async () => {
     try {
       const { status } = await Permissions.askAsync(Permissions.LOCATION);
       if (status === "granted") {
-        const result = await Location.getCurrentPositionAsync({})
-        .catch((error) => console.log(error));
+        const result = await Location.getCurrentPositionAsync({}).catch(
+          (error) => console.log(error)
+        );
         const longitude = JSON.stringify(result.coords.longitude);
         const latitude = JSON.stringify(result.coords.latitude);
         if (result) {
@@ -113,34 +101,33 @@ export default class CustomActions extends React.Component {
     }
   };
 
- //Upload image to firabase
- uploadImageFetch = async (uri) => {
-  const blob = await new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-      resolve(xhr.response);
-    };
-    xhr.onerror = function (e) {
-      console.log(e);
-      reject(new TypeError("Network request failed"));
-    };
-    xhr.responseType = "blob";
-    xhr.open("GET", uri, true);
-    xhr.send(null);
-  });
+  //Upload image to firabase
+  uploadImageFetch = async (uri) => {
+    const blob = await new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function () {
+        resolve(xhr.response);
+      };
+      xhr.onerror = function (e) {
+        console.log(e);
+        reject(new TypeError("Network request failed"));
+      };
+      xhr.responseType = "blob";
+      xhr.open("GET", uri, true);
+      xhr.send(null);
+    });
 
-  const imageNameBefore = uri.split("/");
-  const imageName = imageNameBefore[imageNameBefore.length - 1];
+    const imageNameBefore = uri.split("/");
+    const imageName = imageNameBefore[imageNameBefore.length - 1];
 
-  const ref = firebase.storage().ref().child(`images/${imageName}`);
+    const ref = firebase.storage().ref().child(`images/${imageName}`);
 
-  const snapshot = await ref.put(blob);
+    const snapshot = await ref.put(blob);
 
-  blob.close();
+    blob.close();
 
-  return await snapshot.ref.getDownloadURL();
-};
-
+    return await snapshot.ref.getDownloadURL();
+  };
 
   render() {
     return (
@@ -168,19 +155,19 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     borderRadius: 13,
-    borderColor: '#b2b2b2',
+    borderColor: "#b2b2b2",
     borderWidth: 2,
     flex: 1,
   },
   iconText: {
-    color: '#b2b2b2',
-    fontWeight: 'bold',
+    color: "#b2b2b2",
+    fontWeight: "bold",
     fontSize: 16,
-    backgroundColor: 'transparent',
-    textAlign: 'center',
+    backgroundColor: "transparent",
+    textAlign: "center",
   },
 });
 
 CustomActions.contextTypes = {
   actionSheet: PropTypes.func,
- };
+};
